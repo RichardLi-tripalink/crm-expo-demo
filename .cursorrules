@@ -1,0 +1,109 @@
+rules:
+  # TypeScript 规则
+  typescript:
+    - rule: "使用 TypeScript 类型注解"
+      pattern: "*.{ts,tsx}"
+      message: "所有新文件应使用 TypeScript，并包含适当的类型注解"
+
+    - rule: "避免使用 any 类型"
+      pattern: "*.{ts,tsx}"
+      message: "尽量避免使用 any 类型，使用具体类型或 unknown"
+
+  # React/React Native 规则
+  react:
+    - rule: "使用函数组件和 Hooks"
+      pattern: "*.{tsx,jsx}"
+      message: "优先使用函数组件和 React Hooks，避免使用类组件"
+
+    - rule: "组件文件命名"
+      pattern: "src/components/**/*.tsx"
+      message: "组件文件名应使用 PascalCase，例如: UserProfile.tsx"
+
+    - rule: "组件属性类型"
+      pattern: "src/components/**/*.tsx"
+      message: "为组件属性定义明确的接口或类型"
+
+  # Expo 规则
+  expo:
+    - rule: "使用 Expo Router"
+      pattern: "app/**/*.tsx"
+      message: "使用基于文件系统的 Expo Router 进行路由管理"
+
+    - rule: "原生功能"
+      pattern: "*.{ts,tsx}"
+      message: "使用 Expo SDK 提供的 API，避免直接使用原生模块"
+
+  # 项目结构规则
+  structure:
+    - rule: "目录组织"
+      directories:
+        - app/        # Expo Router 页面
+        - src/components/  # 可重用组件
+        - src/hooks/      # 自定义 Hooks
+        - src/services/   # API 服务
+        - src/utils/      # 工具函数
+        - src/types/      # TypeScript 类型定义
+        - src/constants/  # 常量定义
+        - assets/         # 静态资源
+
+    - rule: "资源导入"
+      pattern: "*.{ts,tsx}"
+      message: "使用相对路径导入本地模块，使用别名导入共享模块"
+
+  # 状态管理规则
+  state:
+    - rule: "状态管理"
+      pattern: "src/**/*.tsx"
+      message: "使用 React Context 进行状态管理，复杂状态考虑使用状态管理库"
+
+  # 样式规则
+  styling:
+    - rule: "样式管理"
+      pattern: "src/**/*.tsx"
+      message: "使用 StyleSheet.create() 定义样式，避免内联样式"
+
+  # 性能规则
+  performance:
+    - rule: "React Native 性能"
+      checks:
+        - "使用 useMemo 和 useCallback 优化性能"
+        - "避免在渲染函数中创建新函数或对象"
+        - "使用 React.memo() 优化纯组件"
+        - "合理使用 Reanimated 进行动画"
+
+  # 测试规则
+  testing:
+    - rule: "单元测试"
+      pattern: "**/*.test.{ts,tsx}"
+      message: "为组件和工具函数编写单元测试，使用 Jest 和 React Native Testing Library"
+
+  # 安全规则
+  security:
+    - rule: "环境变量"
+      pattern: "*.{ts,tsx}"
+      message: "敏感信息使用环境变量，不要硬编码在源代码中"
+
+  # 文档规则
+  documentation:
+    - rule: "代码注释"
+      pattern: "src/**/*.{ts,tsx}"
+      message: "为组件、函数和复杂逻辑添加适当的注释"
+
+    - rule: "组件文档"
+      pattern: "src/components/**/*.tsx"
+      message: "使用 JSDoc 注释记录组件的用途、属性和示例"
+
+conventions:
+  # 命名约定
+  naming:
+    components: "PascalCase"
+    hooks: "use{Name}"
+    utils: "camelCase"
+    types: "PascalCase"
+    constants: "UPPER_SNAKE_CASE"
+
+  # 文件组织
+  files:
+    components: "src/components/{ComponentName}/{ComponentName}.tsx"
+    hooks: "src/hooks/use{Name}.ts"
+    tests: "{filename}.test.{ts,tsx}" 

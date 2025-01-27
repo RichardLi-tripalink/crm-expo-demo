@@ -36,6 +36,11 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "fonts": {
+      "regular": "./assets/fonts/regular.ttf",
+      "medium": "./assets/fonts/medium.ttf",
+      "bold": "./assets/fonts/bold.ttf"
     }
   }
 }
